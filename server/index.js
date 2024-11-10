@@ -1,16 +1,16 @@
 import express from 'express'
 import cors from 'cors'
-import todoRouter from './routers/todoRouter.js'
-import userRouter from './routers/userRouter.js'
+import todoRouter from '../server/routes/todoRouter.js'
+import userRouter from '../server/routes/userRouter.js'
 
 const port = process.env.PORT
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use('/', todoRouter)
-app.use('/user', userRouter)
+app.use(express.urlencoded({ extended: false }))
+app.use('/',todoRouter)
+app.use('/user',userRouter)
 
 app.listen(port)
 

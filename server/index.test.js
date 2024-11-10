@@ -134,7 +134,7 @@ describe('POST register', () => {
 })
 
 describe('POST login', () => {
-    const email = 'too@foo.com'
+    const email = 'todo@foo.com'
     const password = 'todo12345'
     it ('should login with valid credentials', async() => {
         const response = await fetch(base_url + '/user/login', {
@@ -147,6 +147,6 @@ describe('POST login', () => {
         const data = await response.json()
         expect(response.status).equal(500, data.error);
         expect(data).to.be.an('object')
-        expect(data).to.include.all.keys(/*'id','email','token',*/ 'error')
+        expect(data).to.include.all.keys('id','email','token')
     })
 })

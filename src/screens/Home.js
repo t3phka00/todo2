@@ -16,7 +16,7 @@ function Home() {
       .then(response => {
         setTasks(response.data)
       }).catch(error => {
-        alert(error.response.data.error ? error.response.data.error : error)
+        alert(error.response.data.error ? error.response.da.error : error)
       })
   }, [])
 
@@ -27,7 +27,7 @@ function Home() {
       description: task
     },headers)
     .then(response => {
-      setTasks([...tasks,{id: response.data.id, description: task}])
+      setTasks([...tasks,{id: response.data.id,description: task}])
       setTask('')
     }).catch(error => {
       alert(error.response.data.error ? error.response.data.error : error)
@@ -36,6 +36,7 @@ function Home() {
 
   const deleteTask = (id) => {
     const headers = {headers: {Authorization:user.token}}
+
     axios.delete(url + '/delete/' + id,headers)
       .then(response => {
         const withoutRemoved = tasks.filter((item) => item.id !== id)
@@ -44,31 +45,32 @@ function Home() {
         alert(error.response.data.error ? error.response.data.error : error)
       })
   }
+
   return (
     <div id="container">
-      <h3>Todos</h3>
-    <form>
-      <input 
-        placeholder='Add new task'
-        value={task}
-        onChange={e => setTask(e.target.value)}
-        onKeyDown={e => {
-          if (e.key === 'Enter') {
-            e.preventDefault()
-            addTask()
-        }
-      }}
-    />
-    </form>
-    <ul>
-      {
-        tasks.map(item => (  
-            <Row key={item.id} item={item} deleteTask={deleteTask}/>
-        ))
-      }
-    </ul>
+      <h3 className='title'>Todos</h3>
+      <form >
+        <input className='nav-bar'
+          placeholder='Add new task'
+          value={task}
+          onChange={e => setTask(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault()
+              addTask()
+            }
+          }}
+        />
+      </form>
+      <ul>
+          {
+            tasks.map(item => (
+              <Row key={item.id} item={item} deleteTask={deleteTask}/>
+            ))
+          }
+      </ul>
     </div>
   );
 }
 
-export default Home; 
+export default Home;
