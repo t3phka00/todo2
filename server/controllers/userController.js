@@ -39,7 +39,7 @@ const postLogin = async(req,res,next) => {
         const user = userFromDb.rows[0]
         if (!await compare(req.body.password, user.password)) return next(new ApiError(invalid_credentials_message, 401))
 
-        const token = sign(req.body.email, process.env.JWT_SECRET_KEY)
+        const token = sign(req.body.email, process.env.JWT_SECRET_KEY);
         return res.status(200).json(createUserObject(user.id, user.email,token))
     } catch(error) {
         return next(error)
