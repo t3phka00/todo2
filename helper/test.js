@@ -1,7 +1,7 @@
 import fs from 'fs';
-import path from 'path'
-import { pool } from '../helper/db.js'
-import { hash } from 'bcrypt'
+import path from 'path';
+import { pool } from '../helper/db.js';
+import { hash } from 'bcrypt';
 import jwt from 'jsonwebtoken'
 
 const{sign}= jwt

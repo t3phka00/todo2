@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path'
-import { pool } from '../helper/db.js'
+import { pool } from '../helpers/db.js'
 import { hash } from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 const{sign}= jwt
+
 const __dirname = import.meta.dirname
 
 const initializeTestDb = () => {

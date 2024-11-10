@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 const { verify } = jwt
 const authorizationRequired = "Authorization required"
-const invalidCredentials = "invalid credentials"
+const invalidCredentials = "Invalid credentials"
 
 const auth = (req, res, next) => {
     if (!req.headers.authorization) {
@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
     } else {
         try {
             const token = req.headers.authorization
-            jwt.verify(token,process.env.JWT_SECRET_KEY)
+            jwt.verify(token, process.env.JWT_SECRET_KEY)
             next()
         } catch (err) {
             res.statusMessage = invalidCredentials
